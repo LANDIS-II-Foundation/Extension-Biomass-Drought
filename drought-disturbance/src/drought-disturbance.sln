@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drought-disturbance", "drought-disturbance.csproj", "{432B960C-9806-4C33-BE36-B0208603A7D2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "drought-generator", "..\..\..\..\drought-generator\trunk\src\drought-generator\drought-generator.csproj", "{96F9F9AD-45E0-4F15-85BB-571CFE5B38DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LANDIS-II Debug Console", "..\..\..\..\Debug_Console_rc3\LANDIS-II Debug Console.csproj", "{742214C0-CBC9-4E06-8205-297A3EAE61B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +15,6 @@ Global
 		{432B960C-9806-4C33-BE36-B0208603A7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{432B960C-9806-4C33-BE36-B0208603A7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{432B960C-9806-4C33-BE36-B0208603A7D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96F9F9AD-45E0-4F15-85BB-571CFE5B38DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96F9F9AD-45E0-4F15-85BB-571CFE5B38DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96F9F9AD-45E0-4F15-85BB-571CFE5B38DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96F9F9AD-45E0-4F15-85BB-571CFE5B38DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{742214C0-CBC9-4E06-8205-297A3EAE61B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{742214C0-CBC9-4E06-8205-297A3EAE61B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{742214C0-CBC9-4E06-8205-297A3EAE61B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{742214C0-CBC9-4E06-8205-297A3EAE61B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

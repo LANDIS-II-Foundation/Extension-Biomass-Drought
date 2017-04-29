@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 using Edu.Wisc.Forest.Flel.Util;
@@ -11,10 +12,18 @@ namespace Landis.Extension.DroughtGenerator
     class InputParametersParser
         : TextParser<IInputParameters>
     {
+        public override string LandisDataValue
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         //---------------------------------------------------------------------
         //public InputParameterParser()
         //{
-         //   RegisterForInputValues();
+        //   RegisterForInputValues();
         //}
         //---------------------------------------------------------------------
         protected override IInputParameters Parse()
