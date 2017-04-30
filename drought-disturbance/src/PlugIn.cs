@@ -1,11 +1,11 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Landis.Core;
 using Landis.Library.BiomassCohorts;
 using Landis.SpatialModeling;
+using Landis.Library.Metadata;
 
 namespace Landis.Extension.DroughtDisturbance
 {
@@ -20,7 +20,7 @@ namespace Landis.Extension.DroughtDisturbance
         private double dy_min;
         private double dy_max;
         private string mapNameTemplate;
-        private StreamWriter log;
+        public static MetadataTable<EventsLog> eventLog;
         private static IInputParameters parameters;
         private static ICore modelCore;
 
@@ -50,7 +50,6 @@ namespace Landis.Extension.DroughtDisturbance
         //---------------------------------------------------------------------
         public override void Initialize()
         {
-
             Timestep = parameters.Timestep;
             varName = parameters.VarName;
             dy_min = parameters.MinDroughtYears;
@@ -61,32 +60,7 @@ namespace Landis.Extension.DroughtDisturbance
             PartialDisturbance.Initialize();
 
             modelCore.UI.WriteLine("   Opening and Initializing Drought Disturbance log file \"{0}\"...", parameters.LogFileName);
-            try
-            {
-                log = Landis.Data.CreateTextFile(parameters.LogFileName);
-            }
-            catch (Exception err)
-            {
-                string mesg = string.Format("{0}", err.Message);
-                throw new System.ApplicationException(mesg);
-            }
-            log.AutoFlush = true;
-            log.Write("Time,{0}",varName);
-            foreach (ISpecies species in PlugIn.ModelCore.Species)
-            {
-                log.Write(",BioRemoved_{0}", species.Name);
-            }
-            log.Write(",TotalBioRemoved");
-            foreach (ISpecies species in PlugIn.ModelCore.Species)
-            {
-                log.Write(",CohortsKilled_{0}", species.Name);
-            }
-            log.Write(",TotalCohortsKilled");
-            foreach (ISpecies species in PlugIn.ModelCore.Species)
-            {
-                log.Write(",ExtraRem_{0}", species.Name);
-            }
-            log.WriteLine("");
+            MetadataHandler.InitializeMetadata(Timestep, mapNameTemplate, parameters.LogFileName);
         }
 
         //---------------------------------------------------------------------
@@ -294,22 +268,36 @@ namespace Landis.Extension.DroughtDisturbance
                 totalRemoved += siteBioRemoved;
             }
             double avg_dy = dy_sum / siteCount;
-            log.Write("{0},{1:0.00}", modelCore.CurrentTime, avg_dy);
+
+            int i = 0;
+            eventLog.Clear();
+            EventsLog el = new EventsLog();
+            el.Time = ModelCore.CurrentTime;
+            el.AverageDrought = avg_dy;
+            el.BiomassRemoved = new double[PlugIn.ModelCore.Species.Count];
             foreach (ISpecies species in PlugIn.ModelCore.Species)
             {
-                log.Write(",{0}", removedSpp[species.Index]);
+                el.BiomassRemoved[i] = removedSpp[species.Index];
+                i = i + 1;
             }
-            log.Write(",{0}",totalRemoved);
+            i = 0;
+            el.TotalBiomassRemoved = totalRemoved;
+            el.CohortsKilledSpecies = new int[PlugIn.ModelCore.Species.Count];
             foreach (ISpecies species in PlugIn.ModelCore.Species)
             {
-                log.Write(",{0}", killedSpp[species.Index]);
+                el.CohortsKilledSpecies[i] = killedSpp[species.Index];
+                i = i + 1;
             }
-            log.Write(",{0}", totalKilled);
+            i = 0;
+            el.TotalCohortsKilled = totalKilled;
+            el.ExtraRemoved = new double[PlugIn.ModelCore.Species.Count];
             foreach (ISpecies species in PlugIn.ModelCore.Species)
             {
-                log.Write(",{0}", extraRemovedSpp[species.Index]);
+                el.ExtraRemoved[i] = extraRemovedSpp[species.Index];
+                i = i + 1;
             }
-            log.WriteLine("");
+            eventLog.AddObject(el);
+            eventLog.WriteToFile();
 
             //  Write Biomass Removed map
             string path = MapNames.ReplaceTemplateVars(mapNameTemplate, modelCore.CurrentTime);

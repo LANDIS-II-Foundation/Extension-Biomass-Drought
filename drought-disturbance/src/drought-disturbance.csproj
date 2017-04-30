@@ -58,6 +58,10 @@
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\LANDIS-II\6.0\bin\Landis.Library.Cohorts.dll</HintPath>
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\LANDIS-II\v6\bin\extensions\Landis.Library.Cohorts.dll</HintPath>
     </Reference>
+    <Reference Include="Landis.Library.Metadata, Version=1.0.1.31296, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Landis.Library.Metadata.dll</HintPath>
+    </Reference>
     <Reference Include="Landis.Library.Parameters-v1">
       <HintPath>packages\Landis.Library.Parameters.1.0.0-rc1\lib\net35\Landis.Library.Parameters-v1.dll</HintPath>
     </Reference>
@@ -76,6 +80,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventsLog.cs" />
+    <Compile Include="MetadataHandler.cs" />
     <Compile Include="ShortPixel.cs" />
     <Compile Include="InputParameterParser.cs" />
     <Compile Include="InputParameters.cs" />

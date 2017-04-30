@@ -4,6 +4,7 @@ using Landis.SpatialModeling;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Landis.Library.Metadata;
 
 
 namespace Landis.Extension.DroughtGenerator
@@ -16,7 +17,7 @@ namespace Landis.Extension.DroughtGenerator
         public static readonly ExtensionType Type = new ExtensionType("disturbance:drought");
         public static readonly string ExtensionName = "Drought Generator";
 
-        private StreamWriter log;
+        public static MetadataTable<EventsLog> eventsLog;
         public string varName;
         private double mu;
         private double sigma;
@@ -58,18 +59,7 @@ namespace Landis.Extension.DroughtGenerator
             SiteVars.Initialize(varName);
 
             modelCore.Log.WriteLine("   Opening and Initializing Drought log file \"{0}\"...", parameters.LogFileName);
-            try
-            {
-                log = modelCore.CreateTextFile(parameters.LogFileName);
-            }
-            catch (Exception err)
-            {
-                string mesg = string.Format("{0}", err.Message);
-                throw new System.ApplicationException(mesg);
-            }
-            log.AutoFlush = true;
-            log.Write("Time,{0}",varName);
-            log.WriteLine("");
+            MetadataHandler.InitializeMetadata(Timestep, parameters.LogFileName);
 
             if (isDebugEnabled)
                 modelCore.Log.WriteLine("Initialization done");
@@ -89,9 +79,13 @@ namespace Landis.Extension.DroughtGenerator
             if (dY > 10)
                 dY = 10;
             // Output carried in SiteVars represents # years drought per decade
-            log.WriteLine("{0},{1}",
-                modelCore.CurrentTime,
-                dY);
+            eventsLog.Clear();
+            EventsLog el = new EventsLog();
+            el.Time = modelCore.CurrentTime;
+            el.DroughtYears = dY;
+
+            eventsLog.AddObject(el);
+            eventsLog.WriteToFile();
 
             //  Assign values to sites
             foreach (Site site in modelCore.Landscape.AllSites)
