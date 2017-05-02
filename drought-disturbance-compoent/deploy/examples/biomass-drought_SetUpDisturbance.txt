@@ -1,0 +1,41 @@
+LandisData "Drought Disturbance"
+
+Timestep 10
+
+VariableName  "Drought.Years"
+
+MinDroughtVar  2
+MaxDroughtVar  5
+
+BackTransformation EXP  	<< NONE, EXP, SQUARE
+
+InterceptCorrection Y  		<< Y,N
+
+SpeciesParameters  
+>>                                 Seedling 
+>>           Intcpt      Slope     Drought
+>>SppName   Y   Y_SE    B   B_SE   Sensitivity <<1=insensitive, 2=moderately sensitive, 3=sensitive
+>>--------------------------------------------
+abiebals  -4.426 0.037 0.235 0.019   2 <<somewhat drought intolerant
+acerrubr  -5.668 0.031 0.258 0.016   2 <<somewhat drought tolerant
+acersacc  -5.668 0.031 0.258 0.016   2 <<somewhat drought tolerant
+betualle  -4.426 0.037 0.235 0.019   3 <<somewhat drought intolerant
+betupapy  -5.499 0.028 0.576 0.015   2 <<drought intolerant
+fraxamer  -5.668 0.031 0.258 0.016   2 <<somewhat drought tolerant
+piceglau  -4.426 0.037 0.235 0.019   2 <<somewhat drought intolerant
+pinubank  -25.00 0.000 0.000 0.000   2 <<drought tolerant
+pinuresi  -25.00 0.000 0.000 0.000   2 <<drought tolerant
+pinustro  -25.00 0.000 0.000 0.000   2 <<drought tolerant
+poputrem  -5.499 0.028 0.576 0.015   2 <<drought intolerant
+querelli  -25.00 0.000 0.000 0.000   2 <<drought tolerant
+querrubr  -25.00 0.000 0.000 0.000   2 <<drought tolerant
+thujocci  -4.426 0.037 0.235 0.019   3 <<somewhat drought intolerant
+tiliamer  -5.668 0.031 0.258 0.016   2 <<somewhat drought tolerant
+>> tsugcana  -4.426 0.037 0.235 0.019   3 <<somewhat drought intolerant
+>>-------------------------------------------
+
+
+MapName "drought/droughtbiorem-{timestep}.img"
+
+LogFile  "drought/droughtdist-log.csv"
+
