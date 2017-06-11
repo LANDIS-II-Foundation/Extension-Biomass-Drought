@@ -24,7 +24,7 @@ namespace Landis.Extension.DroughtDisturbance
         public double TotalBiomassRemoved { set; get; }
 
         [DataFieldAttribute(Desc = "Cohorts Killed by Species", SppList = true)]
-        public int[] CohortsKilledSpecies { set; get; }
+        public double[] CohortsKilledSpecies { set; get; }
 
         [DataFieldAttribute(Desc = "Total Cohorts Killed")]
         public int TotalCohortsKilled { set; get; }
