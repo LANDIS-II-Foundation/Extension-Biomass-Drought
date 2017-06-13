@@ -1,10 +1,10 @@
-Title:			README_BiomassDrought1.1
+Title:			README_ExtensionBiomassDrought1.2
 Project:		LANDIS-II Landscape Change Model
 Project Component:	Extension-Biomass-Drought
 Component Deposition:	https://github.com/LANDIS-II-Foundation/Extension-Biomass-Drought
 Author:			LANDIS-II Foundation
 Origin Date:		01 May 2017
-Final Date:		
+Final Date:		11 Jun 2017
 
 
 Welcome to the source code repository for Extension-Biomass-Drought, a LANDIS-II disturbance extension.
