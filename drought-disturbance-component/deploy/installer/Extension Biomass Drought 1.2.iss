@@ -1,6 +1,6 @@
-#define PackageName      "Drought Biomass Extension"
+#define PackageName      "Extension Biomass Drought"
 #define PackageNameLong  "Biomass Drought Disturbance System"
-#define Version          "1.1"
+#define Version          "1.2"
 #define ReleaseType      "official"
 #define CoreVersion      "6.0"
 #define CoreReleaseAbbr  ""
@@ -38,10 +38,10 @@ Source: ..\examples\*.bat; DestDir: {#AppDir}\examples\Biomass Drought
 Source: ..\examples\*.csv; DestDir: {#AppDir}\examples\Biomass Drought
 
 
-#define InfoTxta "Drought Disturbance Component 1.1.txt"
+#define InfoTxta "Drought Disturbance Component 1.2.txt"
 Source: {#InfoTxta}; DestDir: {#LandisPlugInDir}
 
-#define InfoTxtb "Drought Generator Component 1.1.txt"
+#define InfoTxtb "Drought Generator Component 1.2.txt"
 Source: {#InfoTxtb}; DestDir: {#LandisPlugInDir}
 
 

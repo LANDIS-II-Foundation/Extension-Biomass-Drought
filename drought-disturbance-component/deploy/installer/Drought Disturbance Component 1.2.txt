@@ -1,7 +1,7 @@
 LandisData  Extension
 
 Name        "Drought Disturbance"
-Version     1.1
+Version     1.2
 Type        disturbance:drought
 Assembly    Landis.Extension.DroughtDisturbance
 Class       Landis.Extension.DroughtDisturbance.PlugIn

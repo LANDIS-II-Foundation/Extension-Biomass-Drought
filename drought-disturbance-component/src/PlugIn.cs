@@ -282,7 +282,7 @@ namespace Landis.Extension.DroughtDisturbance
             }
             i = 0;
             el.TotalBiomassRemoved = totalRemoved;
-            el.CohortsKilledSpecies = new int[PlugIn.ModelCore.Species.Count];
+            el.CohortsKilledSpecies = new double[PlugIn.ModelCore.Species.Count];
             foreach (ISpecies species in PlugIn.ModelCore.Species)
             {
                 el.CohortsKilledSpecies[i] = killedSpp[species.Index];
