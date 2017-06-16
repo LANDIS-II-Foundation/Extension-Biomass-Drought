@@ -4,7 +4,7 @@ Project Component:	Extension-Biomass-Drought
 Component Deposition:	https://github.com/LANDIS-II-Foundation/Extension-Biomass-Drought
 Author:			LANDIS-II Foundation
 Origin Date:		01 May 2017
-Final Date:		11 Jun 2017
+Final Date:		16 Jun 2017
 
 
 Welcome to the source code repository for Extension-Biomass-Drought, a LANDIS-II disturbance extension.
