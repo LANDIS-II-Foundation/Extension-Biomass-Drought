@@ -26,16 +26,11 @@ Source: ..\..\src\bin\debug\Landis.Extension.DroughtGenerator.dll; DestDir: {#Ex
 ;Source: ..\..\src\bin\Debug\Landis.Extension.BaseHarvest.dll; DestDir: {#ExtDir}; Flags: replacesameversion uninsneveruninstall
 
 
-; User Guides are no longer shipped with installer
-; Source: docs\LANDIS-II Drought Generator and Disturbance v1.1 Combined User Guide.pdf; DestDir: {#AppDir}\docs
-
-
-
 ; Complete example for testing the extension
-Source: ..\examples\*.txt; DestDir: {#AppDir}\examples\Biomass Drought
-Source: ..\examples\*.gis; DestDir: {#AppDir}\examples\Biomass Drought
-Source: ..\examples\*.bat; DestDir: {#AppDir}\examples\Biomass Drought
-Source: ..\examples\*.csv; DestDir: {#AppDir}\examples\Biomass Drought
+Source: ..\examples\*.txt; DestDir: {#AppDir}\examples\Biomass Drought; Flags: replacesameversion
+Source: ..\examples\*.gis; DestDir: {#AppDir}\examples\Biomass Drought; Flags: replacesameversion
+Source: ..\examples\*.bat; DestDir: {#AppDir}\examples\Biomass Drought; Flags: replacesameversion
+Source: ..\examples\*.csv; DestDir: {#AppDir}\examples\Biomass Drought; Flags: replacesameversion
 
 
 #define InfoTxta "Drought Disturbance Component 1.2.txt"
