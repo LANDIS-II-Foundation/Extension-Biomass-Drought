@@ -30,7 +30,7 @@ namespace Landis.Extension.DroughtDisturbance
         {
             get
             {
-                return PlugIn.Type;
+                return PlugIn.ExtType;
             }
         }
 

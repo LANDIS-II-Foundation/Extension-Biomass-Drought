@@ -12,8 +12,8 @@ namespace Landis.Extension.DroughtDisturbance
     public class PlugIn
         :ExtensionMain
     {
-        private static readonly bool isDebugEnabled = false;
-        public static readonly ExtensionType Type = new ExtensionType("disturbance:drought");
+        //private static readonly bool isDebugEnabled = false;
+        public static readonly ExtensionType ExtType = new ExtensionType("disturbance:drought");
         public static readonly string ExtensionName = "Drought Disturbance";
 
         private string varName;
@@ -26,7 +26,7 @@ namespace Landis.Extension.DroughtDisturbance
 
         //---------------------------------------------------------------------
         public PlugIn()
-            : base(ExtensionName, Type)
+            : base(ExtensionName, ExtType)
         {
         }
 

@@ -14,7 +14,7 @@ namespace Landis.Extension.DroughtGenerator
 
     {
         private static readonly bool isDebugEnabled = false; 
-        public static readonly ExtensionType Type = new ExtensionType("disturbance:drought");
+        public static readonly ExtensionType ExtType = new ExtensionType("disturbance:drought");
         public static readonly string ExtensionName = "Drought Generator";
 
         public static MetadataTable<EventsLog> eventsLog;
@@ -26,7 +26,7 @@ namespace Landis.Extension.DroughtGenerator
 
         //---------------------------------------------------------------------
         public PlugIn()
-            : base(ExtensionName, Type)
+            : base(ExtensionName, ExtType)
         {
         }
 
@@ -45,7 +45,7 @@ namespace Landis.Extension.DroughtGenerator
         {
             modelCore = mCore;
             InputParametersParser parser = new InputParametersParser();
-            parameters = modelCore.Load<IInputParameters>(dataFile, parser);
+            parameters = Landis.Data.Load<IInputParameters>(dataFile, parser);
         }
 
         //---------------------------------------------------------------------
@@ -58,11 +58,11 @@ namespace Landis.Extension.DroughtGenerator
 
             SiteVars.Initialize(varName);
 
-            modelCore.Log.WriteLine("   Opening and Initializing Drought log file \"{0}\"...", parameters.LogFileName);
+            modelCore.UI.WriteLine("   Opening and Initializing Drought log file \"{0}\"...", parameters.LogFileName);
             MetadataHandler.InitializeMetadata(Timestep, parameters.LogFileName);
 
             if (isDebugEnabled)
-                modelCore.Log.WriteLine("Initialization done");
+                modelCore.UI.WriteLine("Initialization done");
         }
 
         //---------------------------------------------------------------------
@@ -71,7 +71,7 @@ namespace Landis.Extension.DroughtGenerator
         ///</summary>
         public override void Run()
         {
-            modelCore.Log.WriteLine("   Processing Drought Generator ...");
+            modelCore.UI.WriteLine("   Processing Drought Generator ...");
             SiteVars.DroughtYears.ActiveSiteValues = 0;
             PlugIn.ModelCore.LognormalDistribution.Mu = mu;
             PlugIn.ModelCore.LognormalDistribution.Sigma = sigma;

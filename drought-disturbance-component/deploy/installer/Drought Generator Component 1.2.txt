@@ -1,7 +1,7 @@
 LandisData  Extension
 
 Name        "Drought Generator"
-Version     1.2
+Version     1.2.1
 Type        disturbance:drought
 Assembly    Landis.Extension.DroughtGenerator
 Class       Landis.Extension.DroughtGenerator.PlugIn
