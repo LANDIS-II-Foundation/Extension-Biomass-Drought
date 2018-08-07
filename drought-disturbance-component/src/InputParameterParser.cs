@@ -1,6 +1,6 @@
 ﻿
 using System.Collections.Generic;
-using Edu.Wisc.Forest.Flel.Util;
+using Landis.Utilities;
 using Landis.Core;
 
 namespace Landis.Extension.DroughtDisturbance

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using Landis.Library.Metadata;
 using Landis.Core;
-using Edu.Wisc.Forest.Flel.Util;
+using Landis.Utilities;
 using System.IO;
-using Flel = Edu.Wisc.Forest.Flel;
+//using Flel = Edu.Wisc.Forest.Flel;
 
 namespace Landis.Extension.DroughtDisturbance
 {
@@ -95,7 +95,7 @@ namespace Landis.Extension.DroughtDisturbance
             string dir = Path.GetDirectoryName(path);
             if (!string.IsNullOrEmpty(dir))
             {
-                Flel.Util.Directory.EnsureExists(dir);
+                Landis.Utilities.Directory.EnsureExists(dir);
             }
 
             //return new StreamWriter(path);

@@ -136,9 +136,6 @@ namespace Landis.Extension.DroughtDisturbance
                             double Tbiomass = 0;
                             double propLongev = 0;
                             int oldestCohortBio = 0;
-                            //foreach (ISpeciesCohorts speciesCohorts in SiteVars.Cohorts[site])
-                            //{
-                                //foreach (ICohort cohort in speciesCohorts)
                             foreach (ICohort cohort in cohortList)
                                 {
                                     if (cohort.Species == species)
@@ -185,28 +182,9 @@ namespace Landis.Extension.DroughtDisturbance
                                 // Calculate biomass removed
                                 bioRemoved = (int)Math.Round(Tbiomass * actualPropMort);
 
-                                /*
-                                // Drought kills oldest cohort 50% of time
-                                if (bioRemoved < oldestCohortBio)
-                                {
-                                    int oldBioDiff = oldestCohortBio - bioRemoved;
-                                    if (PlugIn.ModelCore.GenerateUniform() > 0.5)
-                                        bioRemoved += oldBioDiff;
-                                    else
-                                    {
-                                        bioRemoved -= oldBioDiff;
-                                        if (bioRemoved < 0)
-                                            bioRemoved = 0;
-                                    }
-                                }
-                                */
-
                                 int remainBioRem = bioRemoved;
 
                                 //Remove biomass from cohorts, starting with the oldest
-                                //foreach (ISpeciesCohorts speciesCohorts in SiteVars.Cohorts[site])
-                                //{
-                                //foreach (ICohort cohort in speciesCohorts)
                                 foreach (ICohort cohort in cohortList)
                                 {
                                     if (cohort.Species == species)
@@ -252,8 +230,8 @@ namespace Landis.Extension.DroughtDisturbance
                         }
                         siteBioRemoved += bioRemoved;
                         bioRemovedSpp += bioRemoved;
-                        Landis.Extension.Succession.Biomass.ForestFloor.AddWoody(woodyRemoved, species, site);
-                        Landis.Extension.Succession.Biomass.ForestFloor.AddLitter(nonWoodyRemoved, species, site);
+                        //Landis.Extension.Succession.Biomass.ForestFloor.AddWoody(woodyRemoved, species, site);
+                        //Landis.Extension.Succession.Biomass.ForestFloor.AddLitter(nonWoodyRemoved, species, site);
                         cohortKilledSpp += cohortsKilled;
                         extraBioRemovedSpp += extraRemoved;
                         removedSpp[species.Index] = bioRemovedSpp;
@@ -321,28 +299,28 @@ namespace Landis.Extension.DroughtDisturbance
                 }
             }
             // Modify establishment
-            if (avg_dy >= dy_min)
-            {
-                foreach (ISpecies species in PlugIn.ModelCore.Species)
-                {
-                    double drought_Mod = 1.0;
-                    if (parameters.Drought_Sens[species] == 2)
-                        drought_Mod = 0.5;
-                    else if (parameters.Drought_Sens[species] == 3)
-                        drought_Mod = 0.0;
-                    if (drought_Mod < 1)
-                    {
-                        foreach (IEcoregion ecoregion in PlugIn.ModelCore.Ecoregions)
-                        {
-                                Landis.Extension.Succession.Biomass.SpeciesData.EstablishModifier[species, ecoregion] *= drought_Mod;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                modelCore.UI.WriteLine("   Drought does not exceed threshold this timestep ...");
-            }
+            //if (avg_dy >= dy_min)
+            //{
+            //    foreach (ISpecies species in PlugIn.ModelCore.Species)
+            //    {
+            //        double drought_Mod = 1.0;
+            //        if (parameters.Drought_Sens[species] == 2)
+            //            drought_Mod = 0.5;
+            //        else if (parameters.Drought_Sens[species] == 3)
+            //            drought_Mod = 0.0;
+            //        if (drought_Mod < 1)
+            //        {
+            //            foreach (IEcoregion ecoregion in PlugIn.ModelCore.Ecoregions)
+            //            {
+            //                    Landis.Extension.Succession.Biomass.SpeciesData.EstablishModifier[species, ecoregion] *= drought_Mod;
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    modelCore.UI.WriteLine("   Drought does not exceed threshold this timestep ...");
+            //}
 
         }
     }

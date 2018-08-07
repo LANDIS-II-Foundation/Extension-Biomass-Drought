@@ -2,8 +2,8 @@
 using Landis.Library.BiomassCohorts;
 using Landis.Core;
 using System.Collections.Generic;
-using Edu.Wisc.Forest.Flel.Util;
-using Landis.Library.Succession;
+using Landis.Utilities;
+//using Landis.Library.Succession;
 
 namespace Landis.Extension.DroughtDisturbance
 {
