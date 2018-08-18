@@ -3,7 +3,7 @@ LandisData  Extension
 Name        "Drought Generator"
 Version     2.0
 Type        disturbance:drought
-Assembly    Landis.Extension.DroughtGenerator
+Assembly    Landis.Extension.DroughtGenerator-v2
 Class       Landis.Extension.DroughtGenerator.PlugIn
 Description  "Generates drought variable for use with Drought Disturbance"
 CoreVersion 7.0
