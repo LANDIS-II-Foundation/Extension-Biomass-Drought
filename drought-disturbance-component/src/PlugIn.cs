@@ -58,6 +58,11 @@ namespace Landis.Extension.DroughtDisturbance
 
             SiteVars.Initialize(varName);
             PartialDisturbance.Initialize();
+            
+            //  Cohorts must be created before the base class is initialized
+            //  because the base class' reproduction module uses the core's
+            //  SuccessionCohorts property in its Initialization method.
+            Landis.Library.BiomassCohorts.Cohorts.Initialize(Timestep, new CohortBiomass());
 
             modelCore.UI.WriteLine("   Opening and Initializing Drought Disturbance log file \"{0}\"...", parameters.LogFileName);
             MetadataHandler.InitializeMetadata(Timestep, mapNameTemplate, parameters.LogFileName);
